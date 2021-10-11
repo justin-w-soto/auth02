@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS user_table;
+
+CREATE TABLE user_table (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL
+);
