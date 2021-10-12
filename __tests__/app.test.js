@@ -9,7 +9,8 @@ describe('alchemy-app routes', () => {
     return setup(pool);
   });
 
- // ----------------------------------------------------------------->>
+ 
+// ->>>---------------------------------------------------------------->>
 
   it('should sign up a new user with a POST', async () => {
     const res = await request(app)
@@ -25,7 +26,8 @@ describe('alchemy-app routes', () => {
     })
   })
 
-  // ----------------------------------------------------------------->>
+ 
+// ->>>---------------------------------------------------------------->>
 
   it('should throw error if user already exists', async () => {
     await UserService.create({ 
@@ -42,12 +44,9 @@ describe('alchemy-app routes', () => {
       
     expect(res.status).toEqual(400);
   
-
-
   });
 
-
-  // ----------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
 
   it('should log a user in using a POST', async () => {
     await UserService.create({
@@ -70,7 +69,7 @@ describe('alchemy-app routes', () => {
     })
   })
 
-  // ----------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
 
   xit('should error 401 if wrong email or password is provided', async () => {
     await UserService.create({
@@ -91,6 +90,9 @@ describe('alchemy-app routes', () => {
 
     expect(res.status).toEqual(401);
   });
+
+
+// ->>>---------------------------------------------------------------->>
 
   it('should GET the logged in user info', async () => {
     await UserService.create({
@@ -121,7 +123,27 @@ describe('alchemy-app routes', () => {
     })
   })
 
+  
+// ->>>---------------------------------------------------------------->>
+
   afterAll(() => {
     pool.end();
   });
 });
+
+
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+// ->>>---------------------------------------------------------------->>
+
+/*A route that does not require a JWT (1 point)
+A route only accessible to signed in users (3 points)
+If the request doesn't have a valid JWT, then return 401 (1 point)
+A route to set a User's role that's only accessible for admin users (3 points)
+If the request doesn't have a valid JWT, then return 401 (1 point)
+If the requesting user isn't an admin, then return 403 (1 point)*/ 
