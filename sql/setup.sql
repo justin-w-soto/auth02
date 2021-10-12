@@ -1,7 +1,19 @@
-DROP TABLE IF EXISTS user_table;
+DROP TABLE IF EXISTS user_table CASCADE;
+DROP TABLE IF EXISTS roles;
+
+CREATE TABLE roles (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  role_title TEXT NOT NULL UNIQUE
+);
+
 
 CREATE TABLE user_table (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL
+    password_hash TEXT NOT NULL,
+    role_id BIGINT NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES roles(id)
 );
+
+INSERT INTO roles (role_title)
+VALUES ('CUSTOMER'), ('ADMIN');
