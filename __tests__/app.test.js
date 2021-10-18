@@ -34,7 +34,7 @@ describe('alchemy-app routes', () => {
  
 // ->>>---------------------------------------------------------------->>
 
-  it('should throw error if user already exists', async () => {
+  xit('should throw error if user already exists', async () => {
     await UserService.create({ 
       email: 'banana@fruit.com',
       password: 'fruitlord_420'
@@ -53,7 +53,7 @@ describe('alchemy-app routes', () => {
 
 // ->>>---------------------------------------------------------------->>
 
-  it('should log a user in using a POST', async () => {
+  xit('should log a user in using a POST', async () => {
     await UserService.create({
       email: 'banana@fruit.com',
       password: 'fruitlord_420' 
@@ -99,7 +99,7 @@ describe('alchemy-app routes', () => {
 
 // ->>>---------------------------------------------------------------->>
 
-  it('should GET the logged in user info', async () => {
+  xit('should GET the logged in user info', async () => {
     await UserService.create({
 
     email: 'banana@fruit.com',
