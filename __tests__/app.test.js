@@ -4,6 +4,13 @@ const request = require('supertest');
 const app = require('../lib/app.js');
 const UserService = require('../lib/middleware/services/UserService.js');
 
+
+const customer = {
+  email: 'banana@fruit.com',
+  password: 'fruitlord_420', 
+  role: 'CUSTOMER'
+}
+
 describe('alchemy-app routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -15,16 +22,14 @@ describe('alchemy-app routes', () => {
   it('should sign up a new user with a POST', async () => {
     const res = await request(app)
     .post('/api/v1/auth/signup')
-    .send({
-      email: 'banana@fruit.com',
-      password: 'fruitlord_420' 
-    });
+    .send(customer);
     
     expect(res.body).toEqual({
-      id: expect.any(String), 
-      email: 'banana@fruit.com'
+      email: 'banana@fruit.com',
+      password: 'fruitlord_420', 
+      role: 'CUSTOMER'
     })
-  })
+  });
 
  
 // ->>>---------------------------------------------------------------->>
